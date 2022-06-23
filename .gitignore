@@ -1,1 +1,5 @@
 __pycache__
+build
+dist
+__pycache__
+meztools.egg-info
