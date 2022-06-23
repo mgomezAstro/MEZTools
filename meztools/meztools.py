@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # Light speed in km/s
-c_ = 299792.458
+_C = 299792.458
 
 
 class MEZTools:
@@ -49,10 +49,10 @@ class MEZTools:
         header[f"CRPIX{ax1}"] = 0
         header[f"CD{ax1}_{ax1}"] = scale * crsum
         header[f"CDELT{ax1}"] = scale * crsum
-        dv = (header[f"CDELT{ax2}"] / w0) * c_
+        dv = (header[f"CDELT{ax2}"] / w0) * _C
         header[f"CDELT{ax2}"] = dv
         header[f"CD{ax2}_{ax2}"] = dv
-        v0 = (header[f"CRVAL{ax2}"] - w0) / w0 * c_ + header["VLSR"] - vsys
+        v0 = (header[f"CRVAL{ax2}"] - w0) / w0 * _C + header["VLSR"] - vsys
         header[f"CRVAL{ax2}"] = v0
 
         header["VSYS"] = (vsys, "Systemic velocity.")
@@ -104,7 +104,7 @@ def plotOneSpec(
         fig.recenter(recenter[0], recenter[1], width=recenter[2], height=recenter[3])
 
     if save and not show:
-        fig.savefig(f"{fitsfile.split('.')[0]}_vel.fits", overwrite=True)
+        fig.savefig(f"{fitsfile.split('.')[0]}_vel.pdf", overwrite=True)
 
     if show:
         plt.show()
