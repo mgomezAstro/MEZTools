@@ -15,11 +15,13 @@ class MEZTools:
 
     def pixTovel(
         self,
+        outname: str,
         w0: float,
         scale: float,
         vsys: float = 0.0,
         crsum: int = None,
         ccsum: int = None,
+        save: bool = False
     ) -> HDUList:
         """Convert the wavelenght and pixels into velocity and arcsec, respectively."""
 
@@ -57,17 +59,18 @@ class MEZTools:
 
         header["VSYS"] = (vsys, "Systemic velocity.")
 
+        if save:
+            hdu.writeto(outname, overwrite=True)
+
         return hdu
 
     def vcut(self):
         pass
 
-    def save_fits(self, outname: str) -> None:
-        pass
-
 
 def plotOneSpec(
     fitsfile: Union[str, HDUList],
+    outfile: Optional[str] = "spec_vel",
     dimensions: Tuple[int] = [1, 0],
     vmin: Optional[float] = None,
     vmax: Optional[float] = None,
@@ -104,7 +107,7 @@ def plotOneSpec(
         fig.recenter(recenter[0], recenter[1], width=recenter[2], height=recenter[3])
 
     if save and not show:
-        fig.savefig(f"{fitsfile.split('.')[0]}_vel.pdf", overwrite=True)
+        fig.savefig(f"{outfile}_vel.pdf")
 
     if show:
         plt.show()
