@@ -106,8 +106,14 @@ def plotOneSpec(
     if recenter is not None:
         fig.recenter(recenter[0], recenter[1], width=recenter[2], height=recenter[3])
 
-    if save and not show:
+    if save:
+        show = False
         fig.savefig(f"{outfile}_vel.pdf")
+
+    if not save and not show:
+        show = True
 
     if show:
         plt.show()
+
+    
