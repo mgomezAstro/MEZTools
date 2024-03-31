@@ -3,3 +3,9 @@ build
 dist
 __pycache__
 meztools.egg-info
+.vim
+.mypy_cache
+.idea
+._*
+kk.py
+*._*
