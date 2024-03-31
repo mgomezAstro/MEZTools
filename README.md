@@ -10,6 +10,7 @@ Package that transform pixels and wavelengths into position and velocity, respec
 from meztools import MEZTools
 
 pv = MEZTools(outname:str, w0: float, scale:float, vsys: float)
+pv.pixTovel()
 # scale => Plate-scale at binning 1x1.
 # w0 => Reference wavelength.
 # vsys => Systemic velocity, when available.

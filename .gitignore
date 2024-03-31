@@ -9,3 +9,4 @@ meztools.egg-info
 ._*
 kk.py
 *._*
+meztools/meztools_app.py
